@@ -1,5 +1,5 @@
 const http = require('node:http');
-const hostname = '127.0.0.1';
+const hostname = 'localhost';
 const port = 8080;
 const server = http.createServer((req, res) => {
   res.statusCode = 200;
