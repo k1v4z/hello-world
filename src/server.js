@@ -3,7 +3,9 @@ require('dotenv').config();
 const express = require('express');
 const configViewEngine = require('./config/ViewEngine');
 const webRouter = require('./route/web');
-const connection = require('./config/db')
+const connection = require('./config/db');
+const bodyParser =  require('body-parser');
+
 const app = express();
 const port = process.env.PORT;
 const localhost = process.env.HOST_NAME;
@@ -17,6 +19,10 @@ connection.query(
     console.log(">>> results: ", results); // results contains rows returned by server
   }
 );
+
+//config req.body
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 //route
 app.use('/',webRouter);
