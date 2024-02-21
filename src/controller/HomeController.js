@@ -1,25 +1,24 @@
 const connection = require('../config/db');
 
-const helloWorld = (req, res) =>{
-    res.send('Hello World!');
-}
-
-const viewEngine = (req, res) =>{
+const getHomePage = (req, res) =>{
     return res.render('sample.ejs');
 }
 
-const postAddUser = (req, res) =>{
+const  postAddUser = async (req, res) =>{
     let {name, email, city} = req.body;
 
-    connection.query(
+    const [results, fields] = await connection.query(
     `INSERT INTO 
     Users (email, name, city)
     VALUES (?,?,?);`,
-    [email, name, city],
-    function (err, results) {
-        res.send('add new user succeed');
-    });
+    [email, name, city]);
+
+    return res.send('add user succeed');
 }
+const getCreateUser = (req, res) => {
+    return res.render('createuser.ejs');
+}
+
 module.exports = {
-    helloWorld, viewEngine, postAddUser //export object
+    getHomePage, postAddUser, getCreateUser //export object
 }
