@@ -3,9 +3,13 @@ const helloWorld = (req, res) =>{
 }
 
 const viewEngine = (req, res) =>{
-    res.render('sample.ejs');
+    return res.render('sample.ejs');
 }
 
+const postAddUser = (req, res) =>{
+    res.send('add new user');
+    console.log(req.body)
+}
 module.exports = {
-    helloWorld, viewEngine //export object
+    helloWorld, viewEngine, postAddUser //export object
 }
