@@ -3,9 +3,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="./css/nav-bar.css">
+    <link rel="stylesheet" href="./css/form-add-user.css">
 </head>
 <body>
-    hello i'm nguyen nhat thao 111
-    <img src="/images/logo.jpg"> 
+    <div class="topnav">
+        <a class="active" href="#home">Home</a>
+        <a href="#news">News</a>
+        <a href="#contact">Contact</a>
+        <a href="#about">About</a>
+    </div>
+    <form action="./add-user" method="POST">
+        <div class="form">
+        <fieldset>
+            <legend>Add new user</legend>
+            <div class="input-group">
+                <label>Email</label>
+                <input type="text" name="email">
+            </div>
+            <div class="input-group">
+                <label>Name</label>
+                <input type="text" name = "name">
+            </div>
+            <div class="input-group">
+                <label>City</label>
+                <input type="text" name="city">
+            </div>
+            <button>Add</button>
+        </fieldset>
+    </div>
+    </form>
+    
 </body>
 </html>
