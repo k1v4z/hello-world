@@ -1,5 +1,5 @@
 const connection = require('../config/db');
-const { getAllUser, addUser, getUserById } = require('../service/CRUDService');
+const { getAllUser, addUser, getUserById, updateUser } = require('../service/CRUDService');
 
 const getHomePage = async (req, res) => {
     let results = await getAllUser();
@@ -23,6 +23,14 @@ const editUser = async (req, res) => {
     return res.render('edituser.ejs', { editUser: user });
 }
 
+const postUpdateUser = async (req, res) => {
+    let { id, email, name, city } = req.body;
+
+    await updateUser(email, name, city, id);
+
+    res.redirect('/');
+}
+
 module.exports = {
-    getHomePage, postAddUser, getCreateUser, editUser //export object
+    getHomePage, postAddUser, getCreateUser, editUser, postUpdateUser //export object
 }
