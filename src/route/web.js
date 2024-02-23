@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const { postAddUser, getHomePage, getCreateUser,
-        editUser, postUpdateUser, postDeleteUser,
-        deleteUser } = require('../controller/HomeController');
+    editUser, postUpdateUser, postDeleteUser,
+    deleteUser } = require('../controller/HomeController');
 
 //router.Method(route,handler);
 router.get('/', getHomePage);
