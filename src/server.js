@@ -4,7 +4,8 @@ const express = require('express');
 const configViewEngine = require('./config/ViewEngine');
 const webRouter = require('./route/web');
 const connection = require('./config/db');
-const bodyParser =  require('body-parser');
+const bodyParser = require('body-parser');
+const { initApiRoute } = require('./route/api');
 
 const app = express();
 const port = process.env.PORT;
@@ -12,6 +13,7 @@ const localhost = process.env.HOST_NAME;
 
 //config template engine and static file
 configViewEngine(app);
+initApiRoute(app);
 
 // connection.query(
 //   'SELECT * FROM `Users`',
@@ -24,8 +26,10 @@ configViewEngine(app);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+//api
+
 //route
-app.use('/',webRouter);
-app.listen(port,localhost, () => {
+app.use('/', webRouter);
+app.listen(port, localhost, () => {
   console.log(`http://${localhost}:${port}`)
 })
