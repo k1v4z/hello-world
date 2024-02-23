@@ -8,7 +8,7 @@ const getHomePage = async (req, res) => {
 
 const postAddUser = async (req, res) => {
     //let {name, email, city} = req.body;
-    const results = await addUser(req);
+    const results = await addUser(req.body);
 
     return res.send('add user succeed');
 }
