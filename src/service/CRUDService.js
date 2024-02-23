@@ -5,8 +5,8 @@ const getAllUser = async () => {
     return results;
 }
 
-const addUser = async (req) => {
-    let { name, email, city } = req.body;
+const addUser = async (userReq) => {
+    let { name, email, city } = userReq;
 
     const [results, fields] = await connection.query(
         `INSERT INTO 
