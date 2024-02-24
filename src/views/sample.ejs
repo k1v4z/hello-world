@@ -40,14 +40,13 @@
                     </td>
                     <td>
                         <a href="/edit/<%= user.id %>">edit</a>
-                        <form action="/delete/user/<%= user.id %>" method="POST">
-                            <button>delete</button>
-                        </form>
+                        <button class="btnDelete" data-id="<%= user.id %>">delete</button>
                     </td>
                 </tr>
                 <% }) %>
         </table>
     </div>
+    <script src="./javascript/handle.js"></script>
 </body>
 
 </html>
