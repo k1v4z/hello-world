@@ -46,8 +46,42 @@ const deleteUser = async (req, res) => {
     res.redirect('/');
 }
 
+const uploadFile = (req, res) => {
+    return res.render('upload.ejs');
+}
+
+const uploadker = async (req, res) => {
+    if (req.fileValidationError) {
+        return res.send(req.fileValidationError);
+    }
+    else if (!req.file) {
+        return res.send('Please select an image to upload');
+    }
+    res.send(`You have uploaded this image: <hr/><img src="/upload/${req.file.filename}" width="500"><hr /><a href="./">Upload another image</a>`);
+}
+
+const uploadMultipleFile = async (req, res) => {
+    if (req.fileValidationError) {
+        return res.send(req.fileValidationError);
+    }
+    else if (!req.files) {
+        return res.send('Please select an image to upload');
+    }
+
+    let result = "You have uploaded these images: <hr />";
+    const files = req.files;
+    let index, len;
+
+    // Loop through all the uploaded images and display them on frontend
+    for (index = 0, len = files.length; index < len; ++index) {
+        result += `<img src="/upload/${files[index].filename}" width="300" style="margin-right: 20px;">`;
+    }
+    result += '<hr/><a href="./">Upload more images</a>';
+    res.send(result);
+}
+
 module.exports = {
     getHomePage, postAddUser, getCreateUser,
     editUser, postUpdateUser, postDeleteUser,
-    deleteUser //export object
+    deleteUser, uploadFile, uploadker, uploadMultipleFile //export object
 }
